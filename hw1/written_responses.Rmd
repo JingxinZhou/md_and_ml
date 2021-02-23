@@ -1,0 +1,48 @@
+---
+title: "written_responses_hw1"
+output: pdf_document
+auther: "Jingxin Zhou"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question 1.5   
+Clean both tibbles using your best judgment. In your write up, briefly explain the goal, assumptions, and implementation for two different preprocessing/cleaning steps.   
+   
+a.trips data cleaning   
+Goal: remove the unreasonable/crazy trips from the data set    
+   
+Assumption:    
+1. The speed of any trip should bigger than 0 miles/hour and should be smaller than 100 miles/hour.   
+2. The trip distance should bigger than 0 mile    
+3. The trip time should be bigger than 60 seconds(I think it is meaningless with a trip less than 1                 minute) and smaller than 8 hour(Though this might be a very big threshold, there do have data bigger                than it...)   
+4. The trips should happened in possible coordinates.   
+               
+Implementation: First using filter to drop off the trips with impossible coordinates. Secondly, using mutate function to generate some new variables. For example, trip_time_in_mins and avg_speed. Thirdly, using filter function to implement the assumptions we listed above.    
+   
+b.fares data cleaning   
+Goal: remove the unreasonable/crazy fares from the data set    
+   
+Assumption: All the fare variables in the data set should be equal or greater than 0 dollor.   
+                
+Implementation:  using filter function to implement the assumption we listed above. Removing all negative fares.    
+
+
+## Question 4.4    
+Description figure 1:    
+In the scatter plot of total_trips and total_earnings below, each point represent a unique driver(by medallion). The x axis means the total trips this driver had on August 15, 2013 and the y axis means the total money he/she earned on that day. We can clearly notice a positive relationship between trip times and earnings.    
+![Caption for the picture.](~/Desktop/trips.png)    
+     
+    
+       
+Description figure 2:   
+In the scatter plot of total_distance and total_earnings below, each point represent a unique driver(by medallion). The x axis means the total distance(in miles) this driver had on August 15, 2013 and the y axis means the total money(in dollor) he/she earned on that day. We can clearly notice a positive relationship between trip distance and earnings. And we noticed that there is a group of outliers in the plot. These driver have relatively short distance but very high total income.   
+![Caption for the picture.](~/Desktop/distance.png)   
+    
+    
+Description figure 3:    
+In the scatter plot of total_time_with_passenger and total_earnings_hour below, each small plot represent the driver's(by medallion) behavior in an hour during a specific time slot. The x axis means the total time spent with passenger in that hour(in seconds), and the y axis means the total money(in dollor) he/she earned during that hour. We can notice a positive relationship between total trip time in hour and earnings in hour. And we noticed that there are less trips happened during 0 to 5 am and most trips happened during 5 to 11 pm.    
+![Caption for the picture.](~/Desktop/my_plot.png)    
+
